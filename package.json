@@ -1,0 +1,104 @@
+{
+  "name": "rb-component",
+  "version": "0.2.17",
+  "description": "components built with React",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SijieCai/rb-component.git"
+  },
+  "homepage": "http://www.reboots.cn/",
+  "scripts": {
+    "compile": "npm run clean:lib && node build.js",
+    "prepublish": "npm run compile",
+    "start": "webpack-dev-server --env dev --config=webpack.config.js --content-base doc/ --inline",
+    "copy": "node -e \"require('directory-copy')({src: __dirname + '/doc',dest: __dirname + '/dist',excludes: [/^\\app/]},function(err){console.log('done!')});\"",
+    "clean": "rimraf doc/build/* dist/* lib/*",
+    "clean:lib": "rimraf lib/*",
+    "release:dist": "npm run clean && webpack --env dist --config=webpack.config.js && npm run copy"
+  },
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib/"
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "CHANGELOG.md",
+    "lib",
+    "dist"
+  ],
+  "keywords": [
+    "react",
+    "ecosystem-react",
+    "react-component",
+    "BEM"
+  ],
+  "author": {
+    "name": "Sijie Cai",
+    "email": "sijie.cai@qq.com"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.1.2",
+    "babel-core": "^6.3.26",
+    "babel-eslint": "^4.1.8",
+    "babel-loader": "^6.2.0",
+    "babel-polyfill": "^6.9.0",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-1": "^6.3.13",
+    "babel-standalone": "^6.7.7",
+    "bootstrap": "^3.3.6",
+    "codemirror": "^5.15.2",
+    "css-loader": "^0.23.0",
+    "directory-copy": "^0.1.0",
+    "eslint": "^1.10.3",
+    "eslint-loader": "^1.1.1",
+    "eslint-plugin-react": "^3.11.3",
+    "file-loader": "^0.8.4",
+    "glob": "^6.0.0",
+    "history": "^2.1.1",
+    "jquery": "^2.2.1",
+    "lodash": "^3.10.1",
+    "minimist": "^1.2.0",
+    "node-sass": "^3.3.3",
+    "null-loader": "^0.1.1",
+    "open": "0.0.5",
+    "output-file-sync": "^1.1.1",
+    "postcss": "^5.0.11",
+    "postcss-loader": "^0.8.0",
+    "precss": "^1.3.0",
+    "raw-loader": "^0.5.1",
+    "react-hot-loader": "^1.2.9",
+    "react-mixin": "^3.0.5",
+    "react-overlays": "^0.6.3",
+    "react-remarkable": "^1.1.1",
+    "react-waypoint": "^2.0.2",
+    "reflux": "^0.4.1",
+    "rimraf": "^2.4.3",
+    "sass-loader": "^1.0.1",
+    "style-loader": "^0.13.0",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.14.0",
+    "react": "^=0.14.0",
+    "react-dom": "^=0.14.0",
+    "react-bootstrap": "*",
+    "react-router": "*"
+  },
+  "dependencies": {
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=0.14.0",
+    "react-dom": ">=0.14.0"
+  },
+  "bugs": {
+    "url": "https://github.com/SijieCai/rb-component/issues"
+  },
+  "maintainers": [
+    {
+      "name": "Sijie Cai",
+      "email": "sijie.cai@qq.com"
+    }
+  ]
+}

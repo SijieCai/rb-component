@@ -1,0 +1,23 @@
+{
+  "createAt": "2016-02-29 10:10:09",
+  "style": "css",
+  "routes": {
+    "admin":  [
+      {"label": "业务1", "to": "/business1", "menus": [
+          {"label": "业务1-1", "to": "/business1/sub1"},
+          {"label": "业务1-2", "to": "/business1/sub2"}
+        ]
+      },
+      {"label": "业务2", "to": "/business2", "menus": [
+          {"label": "业务2-1", "to": "/business2/sub1"},
+          {"label": "业务2-2", "to": "/business2/sub2"}
+        ]
+      }, 
+      {"label": "业务3", "to": "/business3", "menus": [
+          {"label": "业务3-1", "to": "/business3/sub1"},
+          {"label": "业务3-2", "to": "/business3/sub2"}
+        ]
+      }
+    ]
+  }
+}

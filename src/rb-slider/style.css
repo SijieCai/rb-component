@@ -1,0 +1,32 @@
+.rb-slider {
+  width: 46px;
+  height: 21px;
+  cursor: pointer;
+  padding: 2px 3px;
+  border-radius: 100px;
+  box-sizing: border-box;
+  transition: background .5s ease;
+}
+
+.rb-slider--on {
+  background: #579640;
+}
+
+.rb-slider--off {
+  background: #CDCDCD;
+}
+
+.rb-slider__btn {
+  height: 17px;
+  width: 17px;
+  border-radius: 20px;
+  background: #FFF;
+}
+
+.rb-slider__btn--on {
+  float: right;
+}
+
+.rb-slider__btn--off {
+  float: left;
+}

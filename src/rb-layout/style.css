@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html, body, .rb-layout {
+  height: 100%;
+  overflow: hidden;
+}
+
+.rb-layout {
+  position: relative;
+}
+
+.rb-layout__top {
+  position: absolute;
+  width: 100%;
+  top: 0;
+}
+
+.rb-layout__bottom {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding: 0;
+}
+
+.rb-layout__wrapper {
+  height: 100%;
+}
+
+.rb-layout__bottom__left {
+  float: left;
+  height: 100%;
+}
+
+.rb-layout__content {
+  height: 100%;
+  overflow: auto;
+  position: relative;
+}

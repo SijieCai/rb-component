@@ -1,0 +1,94 @@
+.rb-tree{
+  overflow: hidden;
+}
+
+.rb-tree__node__row{
+  height: 30px;    
+  line-height: 30px;
+  color: #666;
+  position: relative;
+}
+
+.rb-tree__node__children__indent {
+  float: left;
+  width: 15px;
+  height: 1px;
+}
+
+.rb-tree__node__children__block {
+  overflow: hidden;
+
+}
+
+
+.rb-tree__node__row__handle {
+  position: relative;
+  height: 100%;
+  width: 26px;
+  float: left;
+  padding-left: 2px;
+
+  .cross-wrap{
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    margin: 0 0 -5px -5px;
+    display: inline-block;
+    background: transparent;
+    height: 10px;
+    width: 10px;
+    z-index: 3;
+    
+  }
+
+  %cross {
+    display: none;
+    position: absolute;
+    left: 50%;
+    margin: -1px 0 0 -1px;
+    height: 100%;
+    border-style: solid;
+    border-color: black;
+    border-width: 0 3px 0 0;
+  }
+  .cross-h {
+    @extend %cross;
+  }
+  .cross-v {
+    @extend %cross;
+    transform: rotate(90deg);
+  }
+
+  &.handle--collapsed {
+     .cross-h {display: block}
+     .cross-v {display: block}
+  }
+
+  &.handle--expanded {
+     .cross-v {display: block}  
+  }
+}
+
+.rb-tree__node__row__handle__guide{
+  position: absolute;
+  width: 50%;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 1px 1px;
+  border-color: #cbd3d9;
+  z-index: 1;
+  bottom: 50%;
+  left: 50%;
+}
+
+.rb-tree__node__children__block:last-child .rb-tree__node__row__handle__guide {
+  height: 9999px;
+}
+
+.rb-tree>.rb-tree__node:last-child>div>div>.rb-tree__node__row__handle__guide {
+  height: 9999px;
+}
+
+.rb-tree>.rb-tree__node:first-child>div>div>.rb-tree__node__row__handle__guide {
+  height: 0;
+}

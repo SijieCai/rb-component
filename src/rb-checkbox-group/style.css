@@ -1,0 +1,32 @@
+.rb-checkbox-group {
+  line-height: 25px;
+}
+
+.rb-checkbox-group__label {
+  float: left;
+  margin-right: 15px;
+}
+
+.rb-checkbox-group__content {
+  overflow: hidden;
+}
+
+.rb-checkbox-group__item {
+  display: inline;
+}
+
+.rb-checkbox-group__item__label {
+  display: inline-block;
+  padding: 0;
+  margin: 0 25px 0 0;
+  vertical-align: top;
+  cursor: pointer;
+  font-weight: normal;
+}
+
+.rb-checkbox-group .rb-checkbox-group__item__input {
+  margin: 6px 5px 0 3px;
+  vertical-align: top;
+  line-height: normal;
+  cursor: pointer;
+}

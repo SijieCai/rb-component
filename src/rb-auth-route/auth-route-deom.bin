@@ -1,0 +1,35 @@
+import React from 'react';
+global.React = React;
+import {render} from 'react-dom';
+import {Router} from 'react-router';
+import {RBAuthRoute} from 'rb-component';
+import {useRouterHistory} from 'react-router';
+import {createHistory} from 'history';
+
+// 使用url前缀，支持多入口
+const browserHistory = useRouterHistory(createHistory)({
+  basename: "/doc"
+});
+
+const rootRoute = RBAuthRoute({
+  path: '/',  //当前层级url
+  chunkLoader(cb) {
+    cb(
+      require('./home'), //当前结构 （Reac.Component)
+      require('./routes/md'), //叶子节点2（RBAuthRoute实例）
+      require('./routes/component') //叶子节点2 (RBAuthRoute实例)
+    );
+  },
+  //onEnter(...args) {/*默认RBAuthRoute.onEnter(...args)*/}
+  //可选参数，如果提供，全局onEnter逻辑在此层级会被忽略，一般用于需要跳过权限验证的的路由
+});
+
+// 路由全局钩子，可以在此做通用权限验证
+RBAuthRoute.onEnter = (nextState, replace, allowEnterCallback)=>{
+  asyncCheckAuth(nextState).then(allowEnterCallBack).catch(replace(nextUrl));
+};
+
+render(
+  <Router history={browserHistory} routes={rootRoute}/>,
+  document.getElementById('app')
+);

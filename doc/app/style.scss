@@ -1,0 +1,45 @@
+$font-large-size: 16px;
+$font-normal-size: 14px;
+
+body {
+  color: #000;
+  font-size: $font-normal-size;
+  font-family: 'Microsoft Yahei', monospace, sans-serif, serif;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #app, .app-container {
+  height: 100%;
+  overflow: hidden;
+}
+
+.app__content {
+  width: 100%;
+  height: calc(100% - 44px);
+  overflow: hidden;
+  padding: 0;
+
+  .main {
+    height: 100%;
+    overflow: auto;
+    position: relative;
+
+    .main-wrapper {
+      height: 100%;
+    }
+  }
+
+  .affix {
+    top: 40px
+  }
+
+  
+}
+.nav {
+  li {
+    &.active {
+        text-decoration: underline;
+    }
+  }
+}

@@ -1,0 +1,50 @@
+.rb-alert{
+  position: absolute;
+  z-index: 100000;
+  left: 50%;
+  top: 5px;
+  transform: translate(-50%);
+}
+
+.rb-alert--hide {
+  display: none;
+}
+
+.rb-alert__content {
+  margin: 10px auto;
+  width: 100%;
+  height: 24px;
+  line-height: 24px;
+  color: #fff;
+  border-radius: 2px;
+  padding: 0 10px;
+}
+ 
+.rb-alert__message{
+  float: left;
+}
+
+.rb-alert__close{
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  line-height: 24px;
+  float: right;
+  cursor: pointer;
+}
+
+.rb-alert__content--error {
+  background-color: #FF0F00;
+}
+
+.rb-alert__content--error .rb-alert__close::before {
+  content: 'X';
+}
+
+.rb-alert__content--success {
+  background-color: #4AAB27;
+}
+
+.rb-alert__content--success .rb-alert__close {
+  display: none;
+}
