@@ -27,7 +27,7 @@ class SearchBar extends React.Component {
     var value = this.state.value;
     if(this.props.hasOwnProperty('value')) {
       value = this.props.value;
-    } 
+    }
     return (
       <div className="rb-search-bar">
         <input
@@ -39,7 +39,7 @@ class SearchBar extends React.Component {
             onKeyDown={e=>{
               if(e.keyCode === 13) {
                 e.preventDefault();
-                this.onSearch(this.state.value);
+                this.props.onSearch(this.state.value);
               }
             }}
         />
