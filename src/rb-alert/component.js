@@ -5,7 +5,7 @@ var alertInstance = {};
 export default class RBAlert extends React.Component {
 
   state = {messages: []}
-  
+
   componentWillMount() {
     var id = this.props.id || '__global__';
     if(alertInstance[id]) {
@@ -76,9 +76,9 @@ export default class RBAlert extends React.Component {
     return (
       <div className={'rb-alert' + (this.state.messages.length ? '' : ' rb-alert--hide')} >
         {this.state.messages.map((message, i)=>
-        <div key={i} className={'rb-alert__content' + ` rb-alert__content--${message.type}`}> 
+        <div key={i} className={'rb-alert__content' + ` rb-alert__content--${message.type}`}>
           <div className="rb-alert__message">{message.message}</div>
-          <div className="rb-alert__close" onClick={()=>this.handleCloseAlert(i)}></div> 
+          <div className="rb-alert__close" onClick={()=>this.handleCloseAlert(i)}></div>
         </div>
         )}
       </div>

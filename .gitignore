@@ -1,6 +1,7 @@
 /node_modules/
 /src/build/*
 /src/dist
+/doc/build
 nohup.out
 ./src/js
 ._*

@@ -16,12 +16,17 @@ export default class CheckboxGroup extends React.Component{
     checkedValues: React.PropTypes.array,
     defaultCheckedValues: React.PropTypes.array,
     onChange: React.PropTypes.func.isRequired,
-    filter: React.PropTypes.func
+    filter: React.PropTypes.func,
+    // use to obtain item's ref so to apply Sortablejs things like that
+    itemRef: React.PropTypes.func,
+    contentRef: React.PropTypes.func
   }
 
   static defaultProps = {
     checkAll: false,
     filter: ()=>true,
+    itemRef: new Function(),
+    contentRef: new Function(),
     defaultCheckedValues: [],
     label: ''
   }
@@ -38,7 +43,7 @@ export default class CheckboxGroup extends React.Component{
 
   getItemLabel = item=>{
     return getObjectFacade(item, this.props.itemLabel);
-  }  
+  }
 
   emitChange = (values, isCheckAll)=>{
     this.props.onChange(values, isCheckAll);
@@ -60,7 +65,7 @@ export default class CheckboxGroup extends React.Component{
     this.setState({checkedValues}, this.emitChange(checkedValues, this.isCheckAll(checkedValues)));
   }
 
-  getCheckedValues = ()=>{ 
+  getCheckedValues = ()=>{
     if(this.props.hasOwnProperty('checkedValues')) {
       return this.props.checkedValues || [];
     }
@@ -79,7 +84,7 @@ export default class CheckboxGroup extends React.Component{
         return false;
       }
     }
-    return true; 
+    return true;
   }
 
   handleCheckAll = (isCheckAll)=>{
@@ -94,7 +99,7 @@ export default class CheckboxGroup extends React.Component{
     if(this.props.checkAll && this.props.items.length > 0 ) {
       var isCheckAll = this.isCheckAll(checkedValues);
       allCheckbox = (
-        <div className="rb-checkbox-group__item">
+        <div className="rb-checkbox-group__item item-all">
           <label className="rb-checkbox-group__item__label">
             <input
                 type="checkbox"
@@ -109,14 +114,14 @@ export default class CheckboxGroup extends React.Component{
     }
     return (
       <div className="rb-checkbox-group">
-        {this.props.label ? 
+        {this.props.label ?
           <div className="rb-checkbox-group__label">
             <span>{this.props.label}</span>
           </div> : null}
-        <div className="rb-checkbox-group__content">
+        <div className="rb-checkbox-group__content" ref={this.props.contentRef}>
           {allCheckbox}
           {this.props.items.filter(this.props.filter).map((item, i) =>
-            <div className="rb-checkbox-group__item" key={i}>
+            <div className="rb-checkbox-group__item item-one" ref={this.props.itemRef} key={i}>
               <label className="rb-checkbox-group__item__label">
                 <input
                     type="checkbox"
