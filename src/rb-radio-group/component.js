@@ -14,11 +14,13 @@ export default class RBRadioGroup extends React.Component{
       React.PropTypes.func
     ]),
     items: React.PropTypes.array.isRequired,
-    onChange: React.PropTypes.func.isRequired
+    onChange: React.PropTypes.func.isRequired,
+    allLabel: React.PropTypes.func
   }
 
   static defaultProps = {
     checkAll: false,
+    allLabel: ()=>'全部'
   }
 
   state = {}
@@ -29,7 +31,7 @@ export default class RBRadioGroup extends React.Component{
 
   handleClickItem(checkedValue) {
     this.setState({checkedValue}, ()=>this.props.onChange(
-      checkedValue, 
+      checkedValue,
       this.isCheckAll(checkedValue)
     ));
   }
@@ -40,7 +42,7 @@ export default class RBRadioGroup extends React.Component{
     }
     return this.state.checkedValue;
   }
-  
+
   getItemValue = item=>{
     return getObjectFacade(item, this.props.itemValue);
   }
@@ -61,21 +63,21 @@ export default class RBRadioGroup extends React.Component{
       allCheckbox = (
         <div className="rb-radio-group__item">
           <label className="rb-radio-group__item__label">
-            <input 
+            <input
                 type="radio"
                 name={this.props.name}
                 className="rb-radio-group__item__input"
                 checked={this.isCheckAll(currentValue)}
                 onChange={()=>this.handleClickItem()}
             />
-            全部
+            {this.props.allLabel()}
           </label>
         </div>
       );
     }
     return (
       <div className="rb-radio-group">
-        
+
         {this.props.label ? <div className="rb-radio-group__label">
           <span>{this.props.label}</span>
         </div> : null}
@@ -85,7 +87,7 @@ export default class RBRadioGroup extends React.Component{
           {this.props.items.map((item, i) =>
             <div className="rb-radio-group__item" key={i}>
               <label className="rb-radio-group__item__label">
-                <input 
+                <input
                     type="radio"
                     name={this.props.name}
                     className="rb-radio-group__item__input"

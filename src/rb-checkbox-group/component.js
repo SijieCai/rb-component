@@ -19,7 +19,8 @@ export default class CheckboxGroup extends React.Component{
     filter: React.PropTypes.func,
     // use to obtain item's ref so to apply Sortablejs things like that
     itemRef: React.PropTypes.func,
-    contentRef: React.PropTypes.func
+    contentRef: React.PropTypes.func,
+    allLabel: React.PropTypes.func
   }
 
   static defaultProps = {
@@ -28,7 +29,8 @@ export default class CheckboxGroup extends React.Component{
     itemRef: new Function(),
     contentRef: new Function(),
     defaultCheckedValues: [],
-    label: ''
+    label: '',
+    allLabel: ()=>'全部'
   }
 
   state = {}
@@ -107,7 +109,7 @@ export default class CheckboxGroup extends React.Component{
                 checked={isCheckAll}
                 onChange={()=>this.handleCheckAll(!isCheckAll)}
             />
-            全部
+            {this.props.allLabel()}
           </label>
         </div>
       );
