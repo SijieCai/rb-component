@@ -1,6 +1,6 @@
 import React from 'react';
 import getObjectFacade from '../helper/get-object-facade';
-export default class CheckboxGroup extends React.Component{
+class CheckboxGroup extends React.Component{
   static propTypes = {
     checkAll: React.PropTypes.bool,
     label: React.PropTypes.string,
@@ -141,3 +141,5 @@ export default class CheckboxGroup extends React.Component{
     );
   }
 }
+
+module.exports = CheckboxGroup;

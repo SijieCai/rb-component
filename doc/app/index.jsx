@@ -3,7 +3,7 @@ import React from 'react';
 global.React = React;
 import {render} from 'react-dom';
 import {Router} from 'react-router';
-import {RBAuthRoute} from 'components';
+import RBAuthRoute from 'components/rb-auth-route';
 import {useRouterHistory} from 'react-router';
 import {createHistory} from 'history';
 

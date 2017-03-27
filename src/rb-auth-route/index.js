@@ -20,5 +20,4 @@ RBAuthRoute.onEnter = function(a, b, c) {
   c();
 }
 
-export default RBAuthRoute;
-export {RBAuthRoute};
+module.exports = RBAuthRoute;

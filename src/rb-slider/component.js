@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class extends React.Component {
+module.exports = class extends React.Component {
   static propTypes = {
     checked: React.PropTypes.bool,
     onChange: React.PropTypes.func

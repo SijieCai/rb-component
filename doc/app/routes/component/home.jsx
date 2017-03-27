@@ -1,7 +1,7 @@
 import React from 'react';
 import LeftMenu from 'doc/components/left-menu';
-const ComponentDocs = require('components/doc');
-const MENUS = Object.keys(ComponentDocs).map(key=>{
+const {docs} = require('doc/includes');
+const MENUS = Object.keys(docs).map(key=>{
   return {
     label: key,
     to: `/component/detail/${key}`

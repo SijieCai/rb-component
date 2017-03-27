@@ -10,8 +10,8 @@ import 'codemirror/addon/selection/active-line';
 import  * as ReactRouter from 'react-router';
 import RBAlert from 'components/rb-alert';
 import './style.scss';
-const ComponentDocs = require('components/doc');
-const RBComponent = require('components');
+import {docs as ComponentDocs, components as RBComponent} from 'doc/includes';
+
 const ComponentsProvider = {};
 function inject(module) {
   Object.keys(module).reduce((obj, key)=>{
@@ -82,12 +82,12 @@ export default class extends Component {
     if(change.origin != 'setValue') {
       var value = doc.getValue();
       this.setState({componentFactory: EMPTY_FACTORY, output: '编译中'});
-      Timeout.startBouncing(()=>this.tryInitComponent(value),1000);
+      Timeout.debounce(()=>this.tryInitComponent(value),1000);
     }
   }
 
   render() {
-    return ( 
+    return (
       <div className="main">
         <RBAlert/>
         <div className="container-fluid">
@@ -102,7 +102,7 @@ export default class extends Component {
                 {this.state.output || this.state.componentFactory()}
               </div>
             </div>
-          </div>        
+          </div>
         </div>
       </div>
     );

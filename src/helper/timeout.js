@@ -15,8 +15,8 @@ var oLocks = {};
 // }
 
 const Timeout = {
-  startBouncing(callback) {
-    Timeout.setOccupyTimeout(callback, 300, '__start_bountcing');
+  debounce(callback) {
+    Timeout.setOccupyTimeout(callback, 300, '__debounce__');
   },
 
   setOccupyTimeout(callback, timeout, occupyKey) {

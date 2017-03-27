@@ -2,7 +2,7 @@ import React from 'react';
 
 var alertInstance = {};
 
-export default class RBAlert extends React.Component {
+class RBAlert extends React.Component {
 
   state = {messages: []}
 
@@ -95,4 +95,4 @@ RBAlert.show = function(message, type, cb, id='__global__'){
 RBAlert.info = (message, id, cb)=>RBAlert.show(message, 'success', cb, id);
 RBAlert.error = (message, id, cb)=>RBAlert.show(message, 'error', cb, id);
 
-export {RBAlert};
+module.exports = RBAlert;

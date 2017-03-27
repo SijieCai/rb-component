@@ -1,7 +1,7 @@
 import React from 'react';
 import getObjectFacade from '../helper/get-object-facade';
 
-export default class RBRadioGroup extends React.Component{
+class RBRadioGroup extends React.Component{
   static propTypes = {
     checkAll: React.PropTypes.bool,
     label: React.PropTypes.string,
@@ -104,4 +104,4 @@ export default class RBRadioGroup extends React.Component{
   }
 }
 
-export {RBRadioGroup};
+module.exports = RBRadioGroup;

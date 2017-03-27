@@ -19,14 +19,14 @@ export default class extends Component {
   render () {
     return (
       <header className="top-menu-component">
-        <div className="top-menu__logo">Reboots</div>
+        <div className="top-menu__logo">Reboots 2.0</div>
         <div className="top-menu__content">
           {this.props.menus.map((item, i) =>
             <div key={i} className="top-menu__content__menu">
               <Link activeClassName="active-menu" onClick={e=>this.handleClick(e, item)} to={item.to}>{item.label}</Link>
             </div>
           )}
-        </div> 
+        </div>
         <div className="top-menu__right">
         </div>
       </header>

@@ -1,2 +1,2 @@
 import './style.css';
-export default from './component';
+module.exports = require('./component');
