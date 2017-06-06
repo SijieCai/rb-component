@@ -1,8 +1,9 @@
 function RBAuthRoute(config) {
-  var {chunkLoader, path, onEnter} = config;
+  var {chunkLoader, path, onEnter, ...rest} = config;
 
   var route = {
     path,
+    ...rest,
     getComponent(location, cb) {
       chunkLoader(entry => cb(null, (entry && entry.default) || entry));
     },
