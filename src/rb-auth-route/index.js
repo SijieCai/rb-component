@@ -1,23 +1,50 @@
-function RBAuthRoute(config) {
-  var {chunkLoader, path, onEnter} = config;
+const func = new Function;
 
+
+function RBAuthRoute(config) {
+  var {path, chunkLoader, getModel, onEnter=RBAuthRoute.onEnter, onLeave=RBAuthRoute.onLeave, ...rest} = config;
+
+  var callLoader = (route, cb)=>{
+    chunkLoader(result=>{
+      cb(RBAuthRoute.loaderMiddleware(route, result))
+    })
+  }
   var route = {
     path,
     getComponent(location, cb) {
-      chunkLoader(entry => cb(null, (entry && entry.default) || entry));
-    },
-    onEnter(nextState, replace, callback) {
-      (onEnter || RBAuthRoute.onEnter)(nextState, replace, callback);
+      callLoader(route, ({component})=>{
+        cb(null, component.default || component, location);
+      });
     },
     getChildRoutes(location, cb) {
-      chunkLoader((...files)=> cb(null, files.slice(1).map(f=>f.default || f)));
-    }
+      callLoader(route, ({childRoutes})=>childRoutes && cb(null, childRoutes.map(f=>f.default || f)) );
+    },
+    getModel(cb) {
+      callLoader(route, ({model})=>model && cb(model));
+    },
+    onEnter(a, b, c) {
+      function allowEnter() {
+        RBAuthRoute.entering(route, a, b);
+        c();
+      }
+      onEnter(a, b, allowEnter);
+    },
+    onLeave(...props) {
+      RBAuthRoute.leaving(route, ...props);
+      onLeave(...props);
+    },
+    ...rest
   };
   return route;
 }
 
+RBAuthRoute.loaderMiddleware = (route, result)=>result;
 RBAuthRoute.onEnter = function(a, b, c) {
   c();
 }
+RBAuthRoute.entering = func;
+RBAuthRoute.leaving = func;
+RBAuthRoute.onLeave = func;
+
 
 module.exports = RBAuthRoute;
