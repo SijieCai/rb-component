@@ -33,7 +33,7 @@ C, D, E, G, H...：页面
 
 ![enter image description here](/images/route1.png "典型页面布局")
 
-这种方案利用了组件化的优势，将出现频率较高的A和B组件封装，设计简单明了。我们成功的交付了一期功能并开始了二期总共20个页面的开发。然后遇到一个严重问题，我们需要支持页面的权限控制，这意味着原来包含菜单的页面（5个A页面，4个B页面，2个F页面）都需要调整，具体就是在每个页面通过ajax获取树形结构的菜单数据，然后把树的一级树节点传到A，二级树节点传给B，以及三级树节点传给F，由于数据是联动的（A菜单的改变导致B和C改变），导致我们无法将逻辑封装到每个组件里面。这简直是噩梦，问题出现在如果组件发生变化倒是改动，需要对多个页面的同一组件调整，重复代码导致高维护成本？想到小学里面的公因数，这个问题的理想情况应该如下
+这种方案利用了组件化的优势，将出现频率较高的A和B组件封装，设计简单明了。我们成功的交付了一期功能并开始了二期总共20个页面的开发。然后遇到一个严重问题，我们需要支持页面的权限控制，这意味着原来包含菜单的页面（5个A页面，4个B页面，2个F页面）都需要调整，具体就是在每个页面通过ajax获取树形结构的菜单数据，然后把树的一级树节点传到A，二级树节点传给B，以及三级树节点传给F，由于数据是联动的（A菜单的改变导致B和C改变），导致我们无法将逻辑封装到每个组件里面。这简直是噩梦，问题出现在如果组件发生变化导致改动，需要对多个页面的同一组件调整，重复代码导致高维护成本？想到小学里面的公因数，这个问题的理想情况应该如下
 
 
 ![enter image description here](/images/route2.png "页面组件树状表示")
@@ -173,7 +173,7 @@ require loads and evaluate the modules. In webpack modules are evaluated left to
 ### 权限控制
 权限控制的背后逻辑很简单，需要拦截所有页面请求，然后从后端获取权限列表进行判断。
 
-Reboots默认提供了一个简洁方案，AuthRoute的 onEnter 函数会在每一个路由发生的时候调用，只有调用第三个参数后，路由才会生效。前两个参数包含目标路由和重定向方法，需要注意的是不能直接用 window.location，否者会导致页面的刷新。这种设计是的异步获取权限进行判断提供了很大便利。
+Reboots默认提供了一个简洁方案，AuthRoute的 onEnter 函数会在每一个路由发生的时候调用，只有调用第三个参数后，路由才会生效。前两个参数包含目标路由和重定向方法，需要注意的是不能直接用 window.location，否者会导致页面的刷新。这种设计使得异步获取权限进行判断提供了很大便利。
 
 AuthRoute的内部实现基于react-router的[动态路由](https://github.com/reactjs/react-router/blob/master/docs/guides/DynamicRouting.md)，请参考react-router获取更多详细。
 
@@ -198,9 +198,9 @@ AuthRoute.onEnter = (nextState, replace, allowEnterCallback)=>{
 
 这个命令做了如下操作
 * 配置`webpack.entry.entryName`。
-* 配置`webpack.alias.entryName`, 目的为了方便的访问入口对于的文件和里面的业务化组件。
+* 配置`webpack.alias.entryName`, 目的为了方便的访问入口对应的文件和里面的业务化组件。
 * 配置`webpack.devServer.historyApiFallback.entryName`, 使得能用webpack dev server方便调试browserHistory的路由
-* 生成对于的文件结构
+* 生成对应的文件结构
 
 生成完了以后，直接访问 http://youhost/entryName 就能看到欢迎页面。
 
@@ -213,7 +213,7 @@ AuthRoute.onEnter = (nextState, replace, allowEnterCallback)=>{
 * 服务端渲染只能用browserHistory
 * hash长得丑
 
-但是一些老的浏览器不支持History对象，这是后browserHistory的兼容方案是每一次跳转都会重新刷新页面，但是谁用react开发IE6的程序呢？
+但是一些老的浏览器不支持History对象，这时候browserHistory的兼容方案是每一次跳转都会重新刷新页面，但是谁用react开发IE6的程序呢？
 
 
 ```javascript
