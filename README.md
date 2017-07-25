@@ -1,6 +1,6 @@
 ## Docs
 
-See the [documentation][http://www.reboots.cn] with live editable examples.
+See the [documentation](http://www.reboots.cn) with live editable examples.
 
 ## Local Setup
 
@@ -10,7 +10,7 @@ See the [documentation][http://www.reboots.cn] with live editable examples.
 
 ## Contributions
 
-Yes please! See the [contributing guidelines][contributing] for details.
+Yes please! See the [contributing guidelines](contributing) for details.
 
 [bootstrap]: http://getbootstrap.com
 [react]: http://facebook.github.io/react/
