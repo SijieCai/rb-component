@@ -4,7 +4,10 @@ import getObjectFacade from '../helper/get-object-facade';
 export default class RBRadioGroup extends React.Component{
   static propTypes = {
     checkAll: React.PropTypes.bool,
-    label: React.PropTypes.string,
+    label: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.object
+    ]),
     itemValue: React.PropTypes.oneOfType([
       React.PropTypes.string,
       React.PropTypes.func
